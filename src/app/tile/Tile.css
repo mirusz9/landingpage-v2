@@ -1,0 +1,17 @@
+.tile {
+	width: 100px;
+	height: 100px;
+	background-color: #333;
+	border: 7px solid black;
+	transition: all 0.3s ease;
+	position: relative;
+}
+
+.tile.lit {
+	border-color: #00ff88;
+}
+
+.tile.walker {
+	border-color: #ff4444;
+	z-index: 10;
+}
