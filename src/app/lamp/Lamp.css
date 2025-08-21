@@ -1,0 +1,170 @@
+.lamp {
+	--base-col: hsl(var(--lamp-hue), 100%, 50%);
+	--scale: 2;
+	--size: calc(var(--scale) * 15px);
+	--border-radius: calc(var(--scale) * 4px);
+	width: var(--size);
+	height: var(--size);
+	margin: calc(var(--scale) * 3px);
+	position: relative;
+}
+
+.lamp-shadow {
+	width: var(--size);
+	height: var(--size);
+	position: relative;
+	border-radius: var(--border-radius);
+	z-index: 2;
+}
+
+.lamp-inner {
+	width: var(--size);
+	height: var(--size);
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 3;
+	border-radius: var(--border-radius);
+	box-shadow: inset calc(var(--scale) * 2px) calc(var(--scale) * -2px) calc(var(--scale) * 3px) calc(var(--scale) * -2px) #10151f, inset calc(var(--scale) * -2px) calc(var(--scale) * 2px) calc(var(--scale) * 3px) calc(var(--scale) * -2px) #3a4762, inset calc(var(--scale) * 2px) calc(var(--scale) * -2px) calc(var(--scale) * 6px) calc(var(--scale) * -2px) #10151f, inset calc(var(--scale) * -2px) calc(var(--scale) * 2px) calc(var(--scale) * 6px) calc(var(--scale) * -2px) #3a4762;
+}
+
+.lamp.lamp-on .lamp-shadow {
+	box-shadow: 0 0 calc(var(--scale) * 15px) calc(var(--scale) * 1px) hsl(from var(--base-col) h 100% 50% / 0.4),
+		0 0 calc(var(--scale) * 10px) calc(var(--scale) * 10px) hsla(from var(--base-col) h 100% 30% / 0.1),
+		0 0 calc(var(--scale) * 50px) calc(var(--scale) * 50px) hsla(from var(--base-col) h 100% 30% / 0.02);
+}
+
+.lamp.lamp-on .lamp-inner {
+	background-color: hsl(from var(--base-col) h 100% 99%);
+	border: 1px solid hsl(from var(--base-col) h 30% 50%);
+	/* background-color: white; */
+	
+	box-shadow: inset calc(var(--scale) * 2px) calc(var(--scale) * -2px) calc(var(--scale) * 3px) calc(var(--scale) * -2px) #10151f55, inset calc(var(--scale) * -2px) calc(var(--scale) * 2px) calc(var(--scale) * 3px) calc(var(--scale) * -2px) #3a476255, inset calc(var(--scale) * 2px) calc(var(--scale) * -2px) calc(var(--scale) * 6px) calc(var(--scale) * -2px) #10151f55, inset calc(var(--scale) * -2px) calc(var(--scale) * 2px) calc(var(--scale) * 6px) calc(var(--scale) * -2px) #3a476255;
+}
+
+.lamp.lamp-off .lamp-inner {
+	background-color: #1e293b;
+	border: 1px solid #2c3544;
+	/* border: 1px solid #141821; */
+	z-index: 1;
+}
+
+/* Lamp Component Styles */
+/* 
+.lamp {
+	--base-col: hsl(var(--lamp-hue), 100%, 50%);
+	--size: 15px;
+	--border-radius: 4px;
+	border-radius: var(--border-radius);
+	width: var(--size);
+	height: var(--size);
+	margin: 3px;
+	position: relative;
+	z-index: 1;
+}
+
+
+
+.lamp-inner {
+	position: relative;
+	z-index: 200;
+	width: 100%;
+	height: 100%;
+	border-radius: var(--border-radius);
+}
+
+.lamp.lamp-on {
+	box-shadow: 0 0 10px 1px hsl(from var(--base-col) h 100% 50%),
+		0 0 20px 20px hsla(from var(--base-col) h 100% 50% / 1);
+}
+
+.lamp.lamp-on .lamp-inner {
+	background-color: hsl(from var(--base-col) h 100% 95%);
+	border: 1px solid hsl(from var(--base-col) h 50% 80%);
+	background-color: white;
+}
+
+.lamp.lamp-off .lamp-inner {
+	background-color: #1e293b;
+	border: 1px solid #2c3544;
+}
+
+.lamp-turning-on {
+	animation: lamp-turn-on 0.5s ease-out;
+}
+
+.lamp-turning-off {
+	animation: lamp-turn-off 0.5s ease-out;
+}
+
+@keyframes lamp-turn-on {
+	0% {
+		box-shadow: none;
+		transform: scale(1);
+	}
+	50% {
+		transform: scale(1.1);
+		box-shadow: 0 0 20px 2px hsl(from var(--base-col) h 100% 50%);
+	}
+	100% {
+		transform: scale(1);
+		box-shadow: 0 0 10px 1px hsl(from var(--base-col) h 100% 50%);
+	}
+}
+
+@keyframes lamp-turn-off {
+	0% {
+		box-shadow: 0 0 10px 1px hsl(from var(--base-col) h 100% 50%);
+		transform: scale(1);
+	}
+	50% {
+		transform: scale(2);
+		box-shadow: 0 0 5px 0.5px hsl(from var(--base-col) h 100% 30%);
+	}
+	100% {
+		box-shadow: none;
+		transform: scale(1);
+	}
+}
+
+.lamp-turning-on .lamp-inner {
+	animation: lamp-inner-turn-on 0.5s ease-out;
+}
+
+.lamp-turning-off .lamp-inner {
+	animation: lamp-inner-turn-off 0.5s ease-out;
+}
+
+@keyframes lamp-inner-turn-on {
+	0% {
+		background-color: #1e293b;
+		border-color: #2c3544;
+		opacity: 0.7;
+	}
+	50% {
+		opacity: 1;
+		background-color: hsl(from var(--base-col) h 100% 85%);
+	}
+	100% {
+		background-color: hsl(from var(--base-col) h 100% 95%);
+		border-color: hsl(from var(--base-col) h 50% 80%);
+		opacity: 1;
+	}
+}
+
+@keyframes lamp-inner-turn-off {
+	0% {
+		background-color: hsl(from var(--base-col) h 100% 95%);
+		border-color: hsl(from var(--base-col) h 50% 80%);
+		opacity: 1;
+	}
+	50% {
+		opacity: 0.5;
+		background-color: hsl(from var(--base-col) h 50% 50%);
+	}
+	100% {
+		background-color: #1e293b;
+		border-color: #2c3544;
+		opacity: 1;
+	}
+} */
