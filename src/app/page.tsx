@@ -60,7 +60,6 @@ export default function Home() {
 	const controlStartX = 10;
 	const controlStartY = 8;
 
-
 	const isValidPosition = (x: number, y: number) => {
 		return x >= 0 && x < width && y >= 0 && y < height;
 	};
@@ -122,6 +121,9 @@ export default function Home() {
 			const directions = [
 				// { x: 0, y: 1 }, // down
 				{ x: 1, y: 0 }, // right
+				{ x: 0, y: -1 }, // up
+				{ x: 0, y: -1 }, // up
+				{ x: 0, y: -1 }, // up
 				{ x: 0, y: -1 }, // up
 				{ x: -1, y: 0 }, // left
 			];
