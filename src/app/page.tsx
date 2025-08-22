@@ -60,16 +60,6 @@ export default function Home() {
 	const controlStartX = 10;
 	const controlStartY = 8;
 
-	// Random walk animation functions
-	const getRandomDirection = () => {
-		const directions = [
-			// { x: 0, y: 1 }, // down
-			{ x: 1, y: 0 }, // right
-			{ x: 0, y: -1 }, // up
-			{ x: -1, y: 0 }, // left
-		];
-		return directions[Math.floor(Math.random() * directions.length)];
-	};
 
 	const isValidPosition = (x: number, y: number) => {
 		return x >= 0 && x < width && y >= 0 && y < height;
@@ -95,7 +85,7 @@ export default function Home() {
 		setWalkerPosition(currentPos);
 
 		const visitedTiles = new Set<string>();
-		const walkSpeed = 300; // milliseconds between steps
+		const walkSpeed = 50; // milliseconds between steps
 		const fadeDelay = 500; // delay before starting fade
 
 		// Continue walking until we reach another edge or take too many steps
@@ -129,14 +119,20 @@ export default function Home() {
 
 			// Get possible moves
 			const possibleMoves = [];
-			for (let i = 0; i < 4; i++) {
-				const direction = getRandomDirection();
+			const directions = [
+				// { x: 0, y: 1 }, // down
+				{ x: 1, y: 0 }, // right
+				{ x: 0, y: -1 }, // up
+				{ x: -1, y: 0 }, // left
+			];
+			for (let i = 0; i < directions.length; i++) {
+				const direction = directions[i];
 				const newPos = {
 					x: currentPos.x + direction.x,
 					y: currentPos.y + direction.y,
 				};
 
-				if (isValidPosition(newPos.x, newPos.y)) {
+				if (isValidPosition(newPos.x, newPos.y) && !visitedTiles.has(`${newPos.y}-${newPos.x}`)) {
 					possibleMoves.push(newPos);
 				}
 			}
