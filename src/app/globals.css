@@ -1,8 +1,12 @@
 @import 'tailwindcss';
 
 :root {
-	--background: #ffffff;
-	--foreground: #171717;
+	/* --scene-sky-col: #100415;
+	--scene-tile-col: #2d162d;
+	--scene-tile-border-col: #e467eb; */
+	--scene-sky-col: #030309;
+	--scene-tile-col: #0b0e1c;
+	--scene-tile-border-col: #3993f3;
 }
 
 @theme inline {
