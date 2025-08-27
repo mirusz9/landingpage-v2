@@ -49,7 +49,7 @@ export default function Home() {
 		(value) => `translateY(calc(50% - ${value}px)) rotateX(90deg) translateY(-50%)`
 	);
 
-	const titleTransformY = useTransform(scrollY, (value) => `translateZ(-2500px) translateY(${-value + 100}px)`);
+	const titleTransformY = useTransform(scrollY, (value) => `translateZ(-2500px) translateY(${-value}px)`);
 
 	// useEffect(() => {
 	// 	const interval = setInterval(() => {
@@ -134,31 +134,38 @@ export default function Home() {
 							<div className="absolute top-[-10px] left-[-10px] bottom-[-10px] right-[-10px] gridGradient z-20"></div>
 						</motion.div>
 						<motion.div
-							className="absolute top-0 left-0 w-full h-full  text-[400px] flex items-center justify-center z-21 transform-3d"
+							className="absolute top-0 left-0 w-full h-full text-[400px] z-21 transform-3d"
 							style={{
 								transform: titleTransformY,
 							}}
 						>
-							<div className="absolute translate-z-[-120px] text-gray-400">
-								<h1>mirusz</h1>
+							<div className="absolute bottom-[100px] left-0 w-full flex items-center justify-center transform-3d">
+								<div className="absolute translate-z-[-120px] text-gray-400">
+									<h1>mirusz</h1>
+								</div>
+								<div className="absolute translate-z-[-100px] text-gray-400">
+									<h1>mirusz</h1>
+								</div>
+								<div className="absolute translate-z-[-80px] text-gray-400">
+									<h1>mirusz</h1>
+								</div>
+								<div className="absolute translate-z-[-60px] text-gray-400">
+									<h1>mirusz</h1>
+								</div>
+								<div className="absolute translate-z-[-40px] text-gray-400">
+									<h1>mirusz</h1>
+								</div>
+								<div className="absolute translate-z-[-20px] text-gray-400">
+									<h1>mirusz</h1>
+								</div>
+								<div className="relative translate-z-0">
+									<h1>mirusz</h1>
+								</div>
 							</div>
-							<div className="absolute translate-z-[-100px] text-gray-400">
-								<h1>mirusz</h1>
-							</div>
-							<div className="absolute translate-z-[-80px] text-gray-400">
-								<h1>mirusz</h1>
-							</div>
-							<div className="absolute translate-z-[-60px] text-gray-400">
-								<h1>mirusz</h1>
-							</div>
-							<div className="absolute translate-z-[-40px] text-gray-400">
-								<h1>mirusz</h1>
-							</div>
-							<div className="absolute translate-z-[-20px] text-gray-400">
-								<h1>mirusz</h1>
-							</div>
-							<div className="absolute translate-z-0">
-								<h1>mirusz</h1>
+							<div className="absolute bottom-0 translate-y-[calc(100%+100px)] scale-y-[-1] left-0 w-full flex items-center justify-center transform-3d">
+								<div className="relative translate-z-0 blur-[30px] opacity-20">
+									<h1>mirusz</h1>
+								</div>
 							</div>
 						</motion.div>
 					</div>
