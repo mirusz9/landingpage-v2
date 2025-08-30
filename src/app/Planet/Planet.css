@@ -1,0 +1,6 @@
+.planet {
+	width: 600px;
+	height: 600px;
+	border-radius: 50%;
+	background: radial-gradient(circle at 50% 0%, #f3a34e, #d26e26, #451506);
+}

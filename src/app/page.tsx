@@ -1,8 +1,10 @@
 'use client';
 import { useState, useRef, useEffect } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import Tile from './tile/Tile';
+import Tile from './Tile/Tile';
 import './page.css';
+import AddReflection from './AddReflection/AddReflection';
+import Planet from './Planet/Planet';
 
 const image = [
 	[1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1, 1],
@@ -49,7 +51,7 @@ export default function Home() {
 		(value) => `translateY(calc(50% - ${value}px)) rotateX(90deg) translateY(-50%)`
 	);
 
-	const titleTransformY = useTransform(scrollY, (value) => `translateZ(-2500px) translateY(${-value}px)`);
+	const titleTransformY = useTransform(scrollY, (value) => `translateY(${-value}px)`);
 
 	// useEffect(() => {
 	// 	const interval = setInterval(() => {
@@ -134,12 +136,12 @@ export default function Home() {
 							<div className="absolute top-[-10px] left-[-10px] bottom-[-10px] right-[-10px] gridGradient z-20"></div>
 						</motion.div>
 						<motion.div
-							className="absolute top-0 left-0 w-full h-full text-[400px] z-21 transform-3d"
+							className="absolute top-0 left-0 w-full h-full text-[400px] z-21 transform-3d flex items-center justify-center"
 							style={{
 								transform: titleTransformY,
 							}}
 						>
-							<div className="absolute bottom-[100px] left-0 w-full flex items-center justify-center transform-3d">
+							<div className="absolute bottom-[100px] translate-z-[-2500px] left-0 w-full flex items-center justify-center transform-3d">
 								<div className="absolute translate-z-[-120px] text-gray-400">
 									<h1>mirusz</h1>
 								</div>
@@ -162,11 +164,17 @@ export default function Home() {
 									<h1>mirusz</h1>
 								</div>
 							</div>
-							<div className="absolute bottom-0 translate-y-[calc(100%+100px)] scale-y-[-1] left-0 w-full flex items-center justify-center transform-3d">
-								<div className="relative translate-z-0 blur-[30px] opacity-20">
+							<div className="absolute bottom-0 translate-y-[calc(100%+100px)] translate-z-[-2500px] scale-y-[-1] left-0 w-full flex items-center justify-center">
+								<div className="blur-[20px] opacity-20">
 									<h1>mirusz</h1>
 								</div>
 							</div>
+							{/* <AddReflection x={0} y={500} z={2000}>
+								<span className="text-white leading-none">hi</span>
+							</AddReflection> */}
+							<AddReflection x={-1800} y={400} z={3800}>
+								<Planet/>
+							</AddReflection>
 						</motion.div>
 					</div>
 				</div>
